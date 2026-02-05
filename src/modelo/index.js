@@ -22,8 +22,6 @@ const PesquisaModelo = {
 			return await collection.insertOne(data);
 		} catch (e) {
 			console.log('Ocorreu um erro ao cadastrar um item na tabela', e);
-		} finally {
-			clientDb.client.close();
 		}
 	}
 };
