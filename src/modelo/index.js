@@ -1,5 +1,6 @@
 const clientDb = require('../../mongo');
 const constantes = require('../contantes');
+const { ObjectId } = require('mongodb');
 const PesquisaModelo = {
 	recuperarGrid: async () => {
 		try {
@@ -14,11 +15,18 @@ const PesquisaModelo = {
 		}
 	},
 	cadastrarItem: async (data) => {
-		console.log('Data modelo', data);
 		try {
 			await clientDb.client.connect();
 			const database = await clientDb.client.db(constantes.constantes.db_name);
 			const collection = await database.collection(constantes.constantes.db_collections.dados);
+			if (data.alteracao) {
+				const id = new ObjectId(data._id);
+				await collection.deleteOne({
+					_id: id
+				});
+				delete data.alteracao;
+				delete data._id;
+			}
 			return await collection.insertOne(data);
 		} catch (e) {
 			console.log('Ocorreu um erro ao cadastrar um item na tabela', e);
