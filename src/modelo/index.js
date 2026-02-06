@@ -10,8 +10,6 @@ const PesquisaModelo = {
 			return await collection.find().toArray();
 		} catch (e) {
 			console.log('Ocorreu um erro ao recuperar os itens da tabela', e);
-		} finally {
-			clientDb.client.close();
 		}
 	},
 	cadastrarItem: async (data) => {

@@ -2,6 +2,7 @@ const pesquisaModelo = require('../modelo/index');
 const { ObjectId } = require('mongodb');
 const PesquisaServico = {
 	recuperarGrid: async () => {
+		console.log('Requisicao para recuperar itens');
 		try {
 			return await pesquisaModelo.recuperarGrid();
 		} catch (e) {
@@ -9,6 +10,7 @@ const PesquisaServico = {
 		}
 	},
 	cadastrarItem: async (data) => {
+		console.log('Requisição na rota cadastro', data);
 		try {
 			return await pesquisaModelo.cadastrarItem(data);
 		} catch (e) {
@@ -16,6 +18,7 @@ const PesquisaServico = {
 		}
 	},
 	excluirPaciente: async (id) => {
+		console.log('Requisicao para exclusao:', id);
 		try {
 			if (id) {
 				const idFormatado = new ObjectId(id);
