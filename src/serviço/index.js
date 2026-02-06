@@ -10,7 +10,7 @@ const PesquisaServico = {
 		}
 	},
 	cadastrarItem: async (data) => {
-		console.log('Requisição na rota cadastro', data);
+		console.log('Requisição na rota cadastro:', data);
 		try {
 			return await pesquisaModelo.cadastrarItem(data);
 		} catch (e) {
