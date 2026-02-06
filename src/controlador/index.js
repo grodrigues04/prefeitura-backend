@@ -23,6 +23,17 @@ const PesquisaControlador = {
 		} catch (e) {
 			console.log('Ocorreu um erro ao tentar cadastar item no controlador', e);
 		}
+	},
+
+	excluirPaciente: async (req, res) => {
+		const id = req.params.id;
+		try {
+			await PesquisaServico.excluirPaciente(id);
+			res.status(204).send({ message: 'Excluido' });
+		} catch (e) {
+			console.log('Ocorreu um erro ao tentar deletar', e);
+		}
+		console.log('Chegou o id', id);
 	}
 };
 

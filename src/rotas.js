@@ -9,4 +9,8 @@ router.get('/registros', (req, res) => {
 router.post('/cadastro', (req, res) => {
 	PesquisaControlador.cadastrarItem(req, res);
 });
+
+router.delete('/deletar-paciente/:id', (req, res) => {
+	PesquisaControlador.excluirPaciente(req, res);
+});
 module.exports = router;

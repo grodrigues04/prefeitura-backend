@@ -31,6 +31,19 @@ const PesquisaModelo = {
 		} catch (e) {
 			console.log('Ocorreu um erro ao cadastrar um item na tabela', e);
 		}
+	},
+
+	excluirPaciente: async (id) => {
+		try {
+			await clientDb.client.connect();
+			const database = await clientDb.client.db(constantes.constantes.db_name);
+			const collection = await database.collection(constantes.constantes.db_collections.dados);
+			return await collection.deleteOne({
+				_id: id
+			});
+		} catch (e) {
+			console.log('Ocorreu um erro ao excluir um item na tabela', e);
+		}
 	}
 };
 
